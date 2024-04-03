@@ -1,1 +1,230 @@
 # Listas-CPE
+
+Lista 1 
+
+1. Hardware
+2. Hardware
+3. Software
+4. Software
+5. Hardware
+
+2. O software é um conjunto de instruções planejadas, ou seja, passo a passo necessário para transformar dados em informações. Ele pode ser usado para resolver um problema em particular ou para realizar uma tarefa específica, serve para controlar o estoque de loja, e até projetar um motor de carro.
+
+3. Algoritmo é uma sequência bem definida de passos com o objetivo de resolver um problema específico.
+
+4. Na computação a linguagem Java é usada para criar aplicativos móveis e Web, software empresarial, dispositivos de Internet das Coisas (IoT), jogos, Big Data, distribuídos e aplicativos baseados em nuvem entre outros tipos.
+
+5. Fácil: Ifood, Mercado Livre, ChatGPT, Waze. Difícil: Vírus e redes sociais.
+
+6. Estudar, ao estudar de forma remota.
+
+7. Conversar com uma pessoa do outro lado do mundo.
+
+8. Driver Booster, Facebook e Youtube.
+
+9. Caminhar, cozinhar, tomar banho, dormir, comer, beber água, jogar futebol, desenhar, escovar os dentes e vestir roupa.
+
+10. Não, pois a máquina sempre irá precisar de alguém para controlá-la.
+
+11. Um processador é o cérebro de um computador, responsável por executar tarefas e programas. A Memória de acesso aleatório (RAM) é um espaço temporário de informações do sistema operacional e de aplicativos em uso, já o armazenamento é o componente do computador que permite que você armazene e acesse dados no longo prazo.
+
+12. 1° passo: montar a cruz. 2° passo: montar a primeira camada. 3°  passo: montar a segunda camada. 4° passo: montar a parte superior, 5° passo: montar as quinas.
+
+13. Bit é o menor item de dado que um computador pode assumir e byte é o conjunto de 8 bits que é usado para representar caracteres em alguma codificação.
+
+14. Para representar números reais, usamos a notação científica em binário. O número real é expresso como mantissa × 2^expoente.
+
+15. Divida o número decimal por 2 e anote o resto da divisão. Continue dividindo o resultado da divisão por 2 até que o resultado da divisão seja 0. Anote os restos das divisões em ordem reversa.
+
+16. O papel do mestre do Scrum é supervisionar a entrega do trabalho e a união de toda a equipe, garantindo que o método esteja sendo realizado corretamente. Ele é o líder da equipe de desenvolvedores, descrevendo o que ela deve fazer no andamento do projeto.
+
+17. Move, copy e del.
+
+18. WiFi: 802.11. Bluetooth: 802.15.1
+
+Lista 2
+
+1. #include <iostream>
+using namespace std;
+
+int main(){
+    int x, y, z;
+    x = 7 + 3 * 6 / 2 - 1;
+    y = 2 % 2 + 2 * 2 / 2;
+    z = (3 * 9 * (3 + (9 * 3 / 3)));
+
+    cout << "Valor de x: " << x << "\n";
+    cout << "Valor de y: " << y << "\n";
+    cout << "Valor de z: " << z << "\n";
+
+    return 0;
+}
+
+2. #include <iostream>
+using namespace std;
+
+int main(){
+    int numero1, numero2;
+
+    cout << "Digite o primeiro número: ";
+    cin >> numero1;
+    cout << "Digite o segundo número: ";
+    cin >> numero2;
+
+    cout << "Soma: " << numero1 + numero2 << "\n";
+    cout << "Produto: " << numero1 * numero2 << "\n";
+    cout << "Diferença: " << numero1 - numero2 << "\n";
+    
+    if (numero2 != 0) {
+        cout << "Quociente: " << numero1 / numero2 << "\n";
+    } else {
+        cout << "Não é possível dividir por zero.\n";
+    }
+
+    return 0;
+}
+
+3. #include <iostream>
+using namespace std;
+
+int main(){
+    const float pi = 3.14159f;
+
+    float raio, diametro, area;
+
+    cout << "Digite o raio do circulo: ";
+    cin >> raio;
+
+    diametro = 2 * raio;
+    area = pi * raio * raio;
+
+    cout << "Diametro da circunferencia: " << diametro << "\n";
+    cout << "Area do circulo: " << area << "\n";
+
+    return 0;
+}
+
+4.  #include <iostream>
+using namespace std;
+
+int main(){
+    // Quadrado
+    cout << "Quadrado:\n";
+    cout << "*******\n";
+    cout << "*     *\n";
+    cout << "*     *\n";
+    cout << "*******\n\n";
+
+    // Círculo oval
+    cout << "Circulo Oval:\n";
+    cout << "  ***  \n";
+    cout << " *   * \n";
+    cout << "*     *\n";
+    cout << " *   * \n";
+    cout << "  ***  \n\n";
+
+    // Seta
+    cout << "Seta:\n";
+    cout << "   *   \n";
+    cout << "  * *  \n";
+    cout << " *   * \n";
+    cout << "*******\n\n";
+
+    // Losango
+    cout << "Losango:\n";
+    cout << "   *    \n";
+    cout << "  * *   \n";
+    cout << " *   *  \n";
+    cout << "*     *\n";
+    cout << " *   *  \n";
+    cout << "  * *   \n";
+    cout << "   *    \n";
+
+    return 0;
+}
+
+5. #include <iostream>
+using namespace std;
+
+int main(){
+    float largura, comprimento;
+
+    cout << "Insira a largura da sala (em metros): ";
+    cin >> largura;
+
+    cout << "Insira o comprimento da sala (em metros): ";
+    cin >> comprimento;
+
+    float area = largura * comprimento;
+
+    cout << "A area da sala e: " << area << " metros quadrados.\n";
+
+    return 0;
+}
+
+6. #include <iostream>
+using namespace std;
+
+int main(){
+    int numero1, numero2;
+
+    cout << "Digite o primeiro numero inteiro: ";
+    cin >> numero1;
+    cout << "Digite o segundo numero inteiro: ";
+    cin >> numero2;
+
+    if (numero2 != 0 && numero1 % numero2 == 0) {
+        cout << numero1 << " e multiplo de " << numero2 << ".\n";
+    } else {
+        cout << numero1 << " nao e multiplo de " << numero2 << ".\n";
+    }
+
+    return 0;
+}
+
+7.
+
+8. #include <iostream>
+using namespace std;
+
+int main(){
+    float cateto1, cateto2;
+
+    cout << "Digite o valor do primeiro cateto: \n";
+    cin >> cateto1;
+    cout << "Digite o valor do segundo cateto: \n";
+    cin >> cateto2;
+
+    float hipotenusa = sqrt(cateto1 * cateto1 + cateto2 * cateto2);
+
+    cout << "O valor da hipotenusa e: " << hipotenusa << "\n";
+
+    return 0;
+}
+
+9. #include <iostream>
+using namespace std;
+
+int main(){
+    float distancia;
+    float custoTotal, custoMedio;
+
+    cout << "Digite a distancia em quilometros: ";
+    cin >> distancia;
+
+    if (distancia <= 50) {
+        custoTotal = distancia * 1.75;
+    } else if (distancia <= 100) {
+        custoTotal = 50 * 1.75 + (distancia - 50) * 1.65;
+    } else {
+        custoTotal = 50 * 1.75 + 50 * 1.65 + (distancia - 100) * 1.50;
+    }
+
+    custoMedio = custoTotal / distancia;
+    cout << "O custo total do aluguel do automovel e: " << custoTotal << " reais\n";
+    cout << "O custo medio por quilometro e: " << custoMedio << " reais\n";
+
+    return 0;
+}
+
+10.
