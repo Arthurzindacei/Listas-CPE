@@ -1,0 +1,272 @@
+1. a)
+
+#include<iostream>
+using namespace std;
+
+int fatorial (int n){
+    return (n == 1 || n == 0) ? 1 : n * fatorial(n-1);
+}
+
+int main (){
+    int num;
+    
+    cout<<"Digite um número:\n";
+    cin>>num;
+
+    if(num < 0){
+        cout<<"O numero é negativo\n";
+        return main();
+    }
+
+    cout<<"O fatorial do seu número é: " << fatorial(num);
+    return 0;
+}
+
+b)
+
+#include<iostream>
+using namespace std;
+
+int fatorial (int n){
+    return (n == 1 || n == 0) ? 1 : n * fatorial(n-1);
+}
+
+int main(){
+    int num;
+    float e = 0.0;
+
+    cout<<"Digite um número positivo:\n";
+    cin>>num;
+
+    if (num < 0){
+        cout<<"O número deve ser positivo\n";
+        return main();
+    }
+
+    for (int i = 0; i < num; i++){
+        e += 1.0/fatorial(i);
+    }
+    cout<<"O número de euler " << e << " com " << num << " termos.";
+    return 0;
+}
+
+c)
+
+#include<iostream>
+using namespace std;
+
+int fatorial (int n){
+    return (n == 1 || n == 0) ? 1 : n * fatorial(n-1);
+}
+
+int main(){
+    int num;
+    float e = 0.0;
+
+    cout<<"Digite um número positivo:\n";
+    cin>>num;
+
+    if (num < 0){
+        cout<<"O número deve ser positivo!\n";
+        return main();
+    }
+
+    for (int i = 0; i < num; i++){
+        e += num^i/fatorial(i);
+    }
+    cout<<"O número de euler " << e << " elevado a x com " << num << " termos.";
+    return 0;
+} 
+
+2.
+
+#include<iostream>
+using namespace std;
+
+int main(){
+    cout << "\n(A)\n \n*\n**\n***\n****\n*****\n******\n*******\n********\n*********\n**********\n";
+    cout << "\n(B)\n \n**********\n*********\n********\n*******\n******\n*****\n****\n***\n**\n*\n:";
+    cout << "\n(C)\n \n**********\n *********\n  ********\n   *******\n    ******\n     *****\n      ****\n       ***\n        **\n         *\n";
+    cout << "\n(D)\n \n         *\n        **\n       ***\n      ****\n     *****\n    ******\n   *******\n  ********\n *********\n**********\n";
+    return 0;
+}
+
+3.
+
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+int main(){
+    int l1, l2, hipo;
+    cout << endl << "Os triplos de pitágoras:" << endl;
+
+    for (l1 = 1; l1 <= 20; l1++) {
+          for (l2 = l1; l2 <= 20; l2++) { // comecei do l1 para evitar hipotenusa < lado
+            for (hipo = l2 + 1; hipo <= 20; hipo++) { // comecei do l2 + 1 para evitar hipotenusa < lado
+                if ((l1 * l1 + l2 * l2 == hipo * hipo) && hipo <= 20){
+                    cout << "\n lado 1: " << l1 << "\n lado 2: " << l2 << "\n hipotenusa: " << hipo << endl;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+4.
+
+#include <iostream>
+#include <iomanip> 
+using namespace std;
+
+int op, qtd = 0,  qtdtotal = 0;
+float valor = 0, valortotal = 0;
+
+float calcvalor(float fvalor, int qtd){
+
+   fvalor = (fvalor * qtd);
+    
+   return fvalor;
+    
+}
+
+int main(){   
+    do{
+      op = 0;
+      qtd   = 0;
+      valor = 0;
+
+      cout << "\n\t\tMENU\n"; 
+      cout << "\n\t1 - produto 1 - R$ 2,98"; 
+      cout << "\n\t2 - produto 2 - R$ 4,50"; 
+      cout << "\n\t3 - produto 3 - R$ 9,98"; 
+      cout << "\n\t4 - produto 4 - R$ 4,49"; 
+      cout << "\n\t5 - produto 5 - R$ 6,87"; 
+      cout << "\n\t0 - finalizar operacao"; 
+      
+      cout << "\n\n\tinforme a opcao desejada: ";
+      cin  >> op;
+      
+      if (op == 0){break;} 
+      
+      if (op < 0 || op > 5){
+         cout << "\n=================\n";
+         cout << " opção inválida! ";
+         cout << "\n=================\n";
+         sleep(3);
+         continue;//desvia o controle para a intrução de antes
+      }
+      
+      cout << "\n\n\tInforme a quantidade vendida do Produto <" << op << "> = ";
+      cin >> qtd;
+
+      cout << "\n\t========================================";
+      cout << "\n\t Valor Vendido do Produto " << op << " foi = ";
+
+      qtdtotal += qtd;
+ 
+      switch (op){
+      
+          case 1:
+            valor = calcvalor(2.98, qtd);
+            break;
+          case 2:
+            valor = calcvalor(4.50, qtd);
+            break;
+          case 3:
+            valor = calcvalor(9.98, qtd);
+            break;
+          case 4:
+            valor = calcvalor(4.49, qtd);
+            break;
+          case 5:
+            valor = calcvalor(6.87, qtd);
+            break;
+          case 0:
+            break;
+      }
+      
+      cout << fixed << setprecision(2) << valor;
+      cout << "\n\t========================================\n";      
+      sleep(2);
+
+      valortotal += valor;
+ 
+    }while (op >= 0 && op <= 5);
+    
+    cout << "\n\t==================================================";
+    cout << "\n\t A quantidade de Produtos vendidos foi = " 
+         << qtdtotal;
+    cout << "\n\t Valor total dos Produtos vendidos foi =  " 
+         << fixed << setprecision(2) << valortotal;
+    cout << "\n\t==================================================\n";         
+    
+    return 0;
+}
+
+5.
+
+#include<iostream>
+using namespace std;
+
+int main() {
+    int num1, num2, num3, num4, num5;
+    string a1, a2, a3, a4, a5;
+
+    cout << "digite 5 numeros de 1 a 30\n";
+    cin >> num1;
+    cin >> num2;
+    cin >> num3;
+    cin >> num4; 
+    cin >> num5;
+
+    for(int i = 1; i <= num1; ++i){
+        a1 += "*";
+    }
+    for(int i = 1; i <= num2; ++i){
+        a2 += "*";
+    } 
+    for(int i = 1; i <= num3; ++i){
+        a3 += "*";
+    }
+    for(int i = 1; i <= num4; ++i){
+        a4 += "*";
+    } 
+    for(int i = 1; i <= num5; ++i){
+        a5 += "*";
+    } 
+
+    cout << a1 << "  " << a2 << "  " << a3 << "  " << a4 << "  " << a5;
+
+    return 0;
+}
+
+6.
+
+#include<iostream>
+using namespace std;
+
+int main (){    
+    int menornum = 1, maiornum = 100, chute;
+    char resp;
+    cout<<"Digite um número entre 1 e 100 \nreponda com '>' se o numero for maior, se for menor responda com '<' e se for o seu número digite '='" << endl;
+    
+    while (true){
+        chute = menornum + (maiornum - menornum) / 2;
+        cout<<"O número é: " << chute << "?\n";
+        cin >> resp;
+
+        if (resp == '='){
+            cout<<"Acertei!\n";
+            }else if (resp == '<'){
+                maiornum = chute - 1;
+            } else if (resp == '>'){
+                menornum = chute + 1;
+            }
+        if (menornum > maiornum){
+            cout<<"O número não está no intervalo";
+        }
+    }
+
+    return 0;
+}
