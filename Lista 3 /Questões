@@ -1,0 +1,220 @@
+1. 
+
+#include<iostream>
+using namespace std;
+
+int main(){
+	float km;
+	float litros;
+
+	cout<< "Insira o numero de km rodados com um tanque cheio:\n";
+	cin>> km;
+	
+	cout << "Insira quantos litros o seu carro possui com um tanque cheio:\n";
+	cin>> litros;
+	
+	cout<<"A média do consumo de cada tanque é de: " << km/litros << "km/litros";	
+	
+	return 0;
+}
+
+2.
+
+#include<iostream>
+using namespace std;
+
+int main(){
+	float gas;
+	float alcool;
+	
+	cout<< "Insira o preço do litro da gasolina:\n";
+	cin>> gas;
+	
+	cout<<"Insira o preço do litro do álcool:\n";
+	cin >> alcool;
+	
+	float calculo = alcool/gas;
+	
+	if (calculo <= 0.7){
+		cout<<"Abasteça com álcool";
+	} else {
+		cout<<"Abasteça com gasolina";
+	}
+	
+	return 0
+}
+
+3. 
+
+#include<iostream>
+using namespace std;
+
+int main(){
+	int num, numOriginal, numReverso = 0;
+	
+	cout<<"Digite um numero de cinco digitos:";
+	cin>> num;
+	
+	numOriginal = num;
+	
+	if (num >= 10000 && num <= 99999) {
+		while (num > 0){
+			numReverso = (numReverso * 10) + (num % 10); 
+			num /= 10; 
+		}
+	
+	if (numOriginal == numReverso) {
+		cout<<"O número é um palindromo";
+	} else {
+		cout<<"O número não é um palindromo";
+	}
+	} else {
+		cout<<"O número não possui cinco digitos";
+	}
+	
+	return 0;
+}
+
+4. 
+
+#include<iostream>
+using namespace std;
+
+int main(){
+	int numBin, numDec = 0, base = 1, resto;
+	
+	cout<<"Digite um numero em binário:";
+	cin>> numBin;
+	
+	while (numBin > 0) {
+		resto = numBin % 10;
+		numDec += resto * base;
+		base *= 2;
+		numBin /= 10;
+	}
+	
+	cout<<"O número em decimal é\n" << numDec;
+	
+	return 0;
+}
+
+5.
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main(){
+	string caractere;
+	
+	cout<<"Digite um caractere\n";
+	cin >> caractere;
+	
+	for (char& c : caractere){
+		switch (c){
+			case 'a':
+				cout<<"Seu caractere É vogal";
+				break;
+			case 'e':
+				cout<<"Seu caractere é vogal";
+				break;
+			case 'i':
+				cout<<"Seu caractere é vogal";
+				break;
+			case 'o':
+				cout<<"Seu caractere é vogal";
+				break;
+			case 'u':
+				cout<<"Seu caractere é vogal";
+				break;
+			default:
+				cout<<"Seu caractere não é vogal";
+		}
+	}
+	
+	return 0;
+}
+
+6. 
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main (){
+	string senha;
+	
+	cout<<"Digite a senha:\n";
+	cin>> senha;
+	
+	if (senha == "1234"){
+		cout << "ACESSO PERMITIDO";
+	} else {
+		cout << "ACESSO NEGADO";
+	}
+	
+	return 0;
+}
+
+7. 
+
+#include<iostream>
+#include<cmath>
+#include<string>
+using namespace std;
+
+int main(){
+	float num1, num2;
+	string operacao;
+	
+	cout<<"Digite dois números reais:\n";
+	cin>> num1 >> num2;
+	
+	cout<<"Escolha a operação a ser feita (+,-,* e /)\n";
+	cin >> operacao;
+	
+	for (char& c : operacao){
+		switch (c){
+			case '+':
+				cout<< num1 + num2 << endl;
+				break;
+			case '-':
+				cout << num1 - num2 << endl;
+				break;
+			case '*':
+				cout << num1 * num2 << endl;
+				break;
+			case '/':
+				cout << num1 / num2 << endl;
+				break;
+		}
+	}
+	
+	return 0;
+}
+
+8.
+
+#include<iostream>
+using namespace std;
+
+int main(){
+	int a;
+	int b;
+	int c;
+	
+	cout<<"Digite as medidas dos 3 lados de um triângulo qualquer:\n";
+	cin >> a >> b >> c;
+	
+	if (a==b && a==c && b==c){
+		cout<<"O seu triângulo é equilátero\n";
+	}
+	else if ((a==b && a!=c && b!=c) || (a==c && a!=b && c!=b) || (b==c && b!=a && c!=a)){
+		cout<<"O seu triângulo é isósceles\n";
+	}
+	else if (a!=b!=c){
+		cout<<"O seu triângulo é escaleno\n";
+	}
+	
+	return 0;
+}
