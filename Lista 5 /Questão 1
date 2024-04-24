@@ -1,4 +1,4 @@
-1. #include<iostream>
+#include<iostream>
 using namespace std;
 
 float fahrenheit(int n){
