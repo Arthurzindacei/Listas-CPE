@@ -1,0 +1,43 @@
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+bool primoa(int num){
+    if (num <= 1)
+        return false;
+    for (int i = 2; i * i <= num; i++){ 
+        if (num % i == 0)
+            return false;
+    }
+    return true;
+}
+
+bool primob(int num){
+    if (num <= 1)
+        return false;
+    for (int i = 2; i  <= sqrt(num); i++){ 
+        if (num % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int main(){
+    int num;
+    cout<<"Digite um número inteiro maior que 1:\n";
+    cin>> num;
+
+    if (primoa(num)){
+        cout << num << " É um numero primo, usando n/2.\n";
+    } else {
+        cout << num << " Não é um numero primo, usando n/2.\n";
+    }
+
+    if(primob(num)) {
+        cout << num << " É um numero primo, usando a raiz de n.\n";
+    } else {
+        cout << num << " Não é um numero primo, usando a raiz de n.\n";
+    }
+        
+    return 0;
+}
