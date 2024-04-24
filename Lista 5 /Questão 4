@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+void pergunta () {
+    int num1 = rand() % 9 + 1;
+    int num2 = rand() % 9 + 1;
+    int resp;
+
+    cout << "Quanto é " << num1 << " vezes " << num2 << "?\n";
+    cin>> resp;
+
+    while ( resp != num1 * num2){
+        cout << "Errado. Tente novamente\n";
+        cin >> resp;
+    }
+
+    cout<<"Parabéns\n";
+
+}
+
+int main () {
+    srand(time(0));
+    
+    cout<<"Digite 's' para continuar e 'n' para finalizar o programa\n";
+    cout<<"Após digitar sua resposta dê 'enter' de novo\n";
+   
+    char continuar;
+
+    do {
+        pergunta();
+
+        cin.ignore();
+        continuar = cin.get();
+
+        cout<< "Deseja continuar? (s/n):";
+        cin>> continuar;
+    } while (continuar == 's');
+
+    cout<<"Finalizado\n";
+
+    return 0;
+}
