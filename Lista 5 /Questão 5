@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main(){
+    srand(time(0));
+
+    char jogar;
+
+    do{
+        int num = rand() % 1000 + 1;
+        int chute;
+        int tentativas = 0;
+
+        cout<<"Escolha um número entre 1 e 1000\n";
+
+        do {
+            cout<<"Digite o seu chute:";
+            cin>> chute;
+            tentativas++;
+
+            if (chute == num) {
+                cout<<"Você acertou!\n";
+            } else if (chute < num) {
+                cout<<"muito baixo, tente novamente\n";
+            } else {
+                cout<<"muito alto, tente novamente\n";
+            }
+        } while (chute != num);
+
+        cout<<"número de tentativas: " << "tentativas\n";
+
+        cout<<"Deseja jogar novamente? (s/n): ";
+        cin>> jogar;
+    } while (jogar == 's');
+
+    cout<<"Finalizado\n";
+    
+    return 0;
+}
