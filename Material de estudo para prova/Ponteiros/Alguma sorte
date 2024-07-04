@@ -1,0 +1,124 @@
+Números sortudos são inteiros positivos cujo a representação decimal contém apenas os dígitos sortudos, 4 e 7. Por exemplo, os números 47, 744, 4 são sortudos e 5,
+17, 467 não são. Um número quase sortudo, é um número que não é sortudo, porém é múltiplo de um número sortudo. Sua tarefa é desenvolver um programa que dado um número
+responda, se ele é sortudo, quase sortudo ou azarado.
+
+Entrada
+A entrada contém vários casos de testes. Cada caso de teste é composto por inteiro 1 ≤ N ≤ 231. A entrada termina com fim de arquivo
+
+Saída
+Para cada caso de teste imprima a classificação do número.
+
+Exemplo de Entrada	
+
+47
+
+8
+
+31
+Exemplo de Saída
+
+sortudo
+
+quase sortudo
+
+azarado
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <unistd.h>
+using namespace std;
+    
+//Declaração das variáveis
+int iCont   = 0;
+int iNum    = 0;
+int iNumero = 0;
+
+//criando um Ponteiro iNumero
+int *pNum;
+
+//Função para chegar o tipo de sortudo
+void VerificarNumero(int *pNumero){//recebe o endereço de memória da variável
+
+    string sNum = to_string(*pNumero);//convertendo para string
+    
+    int iTam = sNum.length();//recuperando o tamanho da string
+
+    int i47 = 0, i4 = 4, i7 = 7;//criando variáveis auxiliares
+
+    //vou procurar número 4 ou 7
+    for (int i = 0; i < iTam; i++){
+        if ((sNum.substr(i, 1) == "4") || 
+            (sNum.substr(i, 1) == "7")){
+           i47 += 1;//contando as vezes que aparecem os dígitos 4 e 7
+        }
+    }
+    
+    //testando se o número é sortudo
+    if (i47 == iTam){//se for igual sei que só tem 4 e 7 no número
+        cout << "\nsortudo";
+
+    }else{
+        i4 = *pNumero / 4;
+        i4 = i4 * 4;
+        if (i4 == *pNumero){//sei que é múltiplo de 4
+            cout << "\nquase sortudo";
+            
+        }else{        
+            i7 = *pNumero / 7;
+            i7 = i7 * 7;
+            if (i7 == *pNumero){//sei que é múltiplo de 7
+                cout << "\nquase sortudo";
+            }else{
+                cout << "\nazarado";//sei que é um coitado
+            }
+        }
+    }
+}
+
+int main(){
+
+    //criticando a entrada do número de testes
+    while(true){
+        
+        //limpando a tela 
+        system("clear");
+        
+        cout << "\nInforme o número de Testes = ";
+        cin >> iNum;
+        
+        if (iNum > 0){//criticando o intervalo
+           break;//tudo ok, vamos em frente
+        }
+        
+        cout << "\nNúmero do Teste inválido!\n";
+        sleep(2);//espera 2 segundos até a apagar a mensagem
+    }
+
+    while(iNum > iCont){
+
+        cout << "\nInforme um Número Positivo = "; 
+        cin >> iNumero;
+        
+        if (iNumero < 0 || iNumero > 231){//criticando o intervalo
+           cout << "\nNúmero informado fora do intervalo (1 e 231)\n";
+           sleep(2);
+           continue;//volta para o início do laço
+        }
+
+        pNum = &iNumero;//atribuindo o endereço de iNumero
+
+        //vou verificar a situação do número informado
+        VerificarNumero(pNum);
+
+        iCont++;//incrementando o contador de testes
+        
+    }
+
+    return 0;//Fim da aplicação tchau tchau
+}
