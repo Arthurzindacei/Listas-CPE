@@ -1,0 +1,77 @@
+Leia um valor e faça um programa que coloque o valor lido na primeira posição de um vetor N[10]. Em cada posição subsequente, coloque o dobro do valor da posição 
+anterior. Por exemplo, se o valor lido for 1, os valores do vetor devem ser 1,2,4,8 e assim sucessivamente. Mostre o vetor em seguida.
+
+Entrada
+A entrada contém um valor inteiro (V<=50).
+
+Saída
+Para cada posição do vetor, escreva "N[i] = X", onde i é a posição do vetor e X é o valor armazenado na posição i. O primeiro número do vetor N (N[0]) irá receber o 
+valor de V.
+
+Exemplo de Entrada	
+1
+Exemplo de Saída
+N[0] = 1
+N[1] = 2
+N[2] = 4
+...
+
+
+
+
+
+#include <iostream>
+#include <cstring>
+#include <unistd.h>
+#include <iomanip>
+using namespace std;
+    
+//Declaração das variáveis
+const int iTam = 100;
+
+//Função para carregar o vetor I
+void CarregarVetorIII(float *pVetor){//recebe o endereço de memória da variável
+
+  for (int i = 1; i < iTam; i++) {
+      pVetor[i] = (pVetor[i-1] / 2);
+   }
+
+}
+
+//Função para imprimir o vetor I
+void ImprimirVetorI(float pVetor[]){//recebe o endereço de memória da variável
+
+  for (int i = 0; i < iTam; i++) {
+      cout << "\n N[" << i << "] = " 
+           << fixed << setprecision(4) << pVetor[i];
+   }
+
+}
+
+int main(){
+
+    float fNum;//valor inicial informado
+    
+    cout << "\n Informe um valor positivo = ";
+    cin >> fNum;
+    
+    //corrigindo entrada se for o caso...
+    if (fNum < 0.0){fNum *= -1;}
+    
+    //declarando um ponteiro para Vetor III
+    float *pVetorIII;
+    
+    //alocando espaços de memória para o pVetorIII
+    pVetorIII = new float[iTam];
+
+    //populando o VetorIII com o primeiro valor informado
+    pVetorIII[0] = fNum;
+
+    //chamando a função para imprimir o vetor III
+    CarregarVetorIII(pVetorIII);
+
+    //imprimir vetor III
+    ImprimirVetorI(pVetorIII);
+    
+    return 0;//Fim da aplicação tchau tchau
+}
