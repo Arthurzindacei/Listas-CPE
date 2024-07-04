@@ -1,0 +1,107 @@
+
+Uma rainha requisitou os serviços de um monge e disse-lhe que pagaria qualquer preço. O monge, necessitando de alimentos, perguntou a rainha se o pagamento poderia ser
+feito em grãos de trigo dispostos em um tabuleiro de damas, de forma que o primeiro quadrado tivesse apenas um grão, e os quadrados subseqüentes, o dobro do quadrado
+anterior. A rainha considerou o pagamento barato e pediu que o serviço fosse executado, porém, um dos cavaleiros que estava presente e entendia um pouco de matemática 
+alertou-a que seria impossível executar o pagamento, pois a quantidade de grão seria muito alta. Curiosa, a rainha solicitou então a este cavaleiro que era bom em
+cálculo, que fizesse um programa que recebesse como entrada o número de quadrados a serem usados em um tabuleiro de damas e apresentasse a quantidade de kg de trigo 
+correspondente, sabendo que cada 12 grãos do cereal correspondem a uma grama. Finalmente, o cálculo da quantidade deverá caber em um valor inteiro de 64 bits sem sinal.
+
+Entrada
+A primeira linha de entrada contem um único inteiro N (1 ≤ N ≤ 100), indicando o número de casos de teste. Cada caso de teste contém um único inteiro X (1 ≤ X ≤ 64),
+indicando o número de casas do tabuleiro que serão utilizadas.
+
+Saída
+Para cada caso de teste, imprima a quantidade de kgs de trigo que o monge esperava receber.
+
+Exemplo de Entrada	
+3
+7
+19
+14
+Exemplo de Saída
+0 kg
+43 kg
+1 kg
+
+
+
+
+
+#include <iostream>
+#include <cstring>
+#include <unistd.h>
+using namespace std;
+    
+//Declaração das variáveis
+int iCont = 0;
+int iNum  = 0;
+int iTab  = 0;
+
+//Função para calcular a quantidade de grãos em quilos a ser paga ao Monge
+void ConverteGraos(int pQtd, long long int *pTotal){//recebe o endereço de memória da variável
+  
+  *pTotal = 1;
+
+  for (int i = 1; i <= pQtd; i++) {
+
+      *pTotal *= 2;//dobrando o valor de iTotal
+
+   }
+   
+   //convertendo a soma 
+   *pTotal = (*pTotal /1000) /12;
+   
+}
+
+int main(){
+
+    //estou criando um ponteiro para número de tabuleiros
+    long long int *iTotal;
+    long long int ilTotal = 0;//criando um inteiro de 64 bits
+    
+    //inicializando o ponteiro
+    iTotal = &ilTotal;
+    
+    //criticando a entrada do número de testes
+    while(true){
+        //limpando a tela 
+        system("clear");
+        
+        cout << "\nInforme um número de Teste entre 1 e 100 = ";
+        cin >> iNum;
+
+        if (iNum > 0 && iNum < 101){//criticando o intervalo
+           break;//tudo ok, vamos em frente
+        }
+        
+        cout << "\nNúmero do Teste fora do intervalo (1 e 100)\n";
+        sleep(2);//espera 2 segundos até a apagar a mensagem
+    }
+
+    //criticando a entrada do número de tabuleiros
+    do{
+
+        cout << "\nInforme a Quantidade de Tabuleiros = "; 
+        cin >> iTab; 
+
+        if (iTab < 1 || iTab > 64){//criticando o intervalo
+            cout << "\nNúmero de Tabuleiros fora do intervalo (1 e 64)\n";
+            sleep(2);//espera 2 segundos até a apagar a mensagem
+            continue;//volta para o while(iNum > iCont)
+        }
+        
+        //vou passar os endereços de um ponteiro e uma variável para a
+        //procedure ConverteGraos - poderia passar apenas a variável, mas 
+        //estamos treinando passagem por referência...
+        
+        ConverteGraos(iTab, iTotal);
+        
+        cout << "\nA Quantidade de Grãos a ser Paga ao Monge é = " 
+             << ilTotal << " kg\n";
+        
+        iCont++;//estou contando até o número de Testes
+             
+    }while(iNum > iCont);
+    
+    return 0;//Fim da aplicação tchau tchau
+}
