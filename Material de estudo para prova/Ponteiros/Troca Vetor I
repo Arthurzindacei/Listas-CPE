@@ -1,0 +1,107 @@
+Faça um programa que leia um vetor N[20]. Troque a seguir, o primeiro elemento com o último, o segundo elemento com o penúltimo, etc., até trocar o 10º com o 11º.
+Mostre o vetor modificado.
+
+Entrada
+A entrada contém 20 valores inteiros, positivos ou negativos.
+
+Saída
+Para cada posição do vetor N, escreva "N[i] = Y", onde i é a posição do vetor e Y é o valor armazenado naquela posição.
+
+Exemplo de Entrada	
+0
+-5
+...
+63
+230
+
+Exemplo de Saída
+
+N[0] = 230
+N[1] = 63
+...
+N[18] = -5
+N[19] = 0
+
+
+
+
+#include <iostream>
+#include <cstring>
+#include <unistd.h>
+using namespace std;
+    
+const int iTam = 5;
+
+//Função para carregar o vetor I
+void CarregarVetorI(int *pVetor){//recebe o endereço de memória da variável
+
+  for (int i = 0; i < iTam; i++) {
+      cout << "\nInforme um número = ";
+      cin >> pVetor[i];
+   }
+
+}
+
+//Função para inverter o vetor I
+void InverterVetorI(int *pVetor){//recebe o endereço de memória da variável
+
+  int iAux;//variável para auxiliar na troca
+ 
+  int iV[iTam];//gato
+ /*Invertendo os dados no vetor:*/ 
+  /*
+  int j = iTam -1;
+ 
+  for(i = 0; i < n/2; i++){
+    tmp = vet[i];
+    vet[i] = vet[j];
+    vet[j] = tmp;
+    j--;
+  }
+  */
+  for (int i = 0; i < iTam; i++) {
+      iV[(iTam-1)-i]         = pVetor[i];//gato
+/*      
+      iAux            = pVetor[i]; 
+      pVetor[i]       = pVetor[j]; 
+      pVetor[j]       = iAux; 
+      j--;
+*/      
+   }
+
+   //gato
+   for (int i = 0; i < iTam; i++) {
+       pVetor[i]       = iV[i]; 
+   }
+
+}
+
+//Função para imprimir o vetor I
+void ImprimirVetorI(int pVetor[]){//recebe o endereço de memória da variável
+
+  for (int i = 0; i < iTam; i++) {
+      cout << "\n N[" << i << "] = " << pVetor[i];
+   }
+
+}
+
+int main(){
+
+    //declarando um ponteiro para Vetor I
+    int *pVetorI;
+    
+    //instanciando Vetor I para 20 endereços/posições
+    //alocando 20 espaços de memória para o pVetorI
+    pVetorI = new int[iTam];
+
+    //chamando a função para imprimir o vetor I
+    CarregarVetorI(pVetorI);
+
+    //inverter vetor I
+    InverterVetorI(pVetorI);
+
+    //imprimir vetor I
+    ImprimirVetorI(pVetorI);
+    
+    return 0;//Fim da aplicação tchau tchau
+}
