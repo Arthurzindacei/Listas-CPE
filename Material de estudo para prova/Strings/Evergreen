@@ -1,0 +1,81 @@
+Evergreen Bushy, um dos duendes ajudantes de Noel, responsável por inventar muitos dos brinquedos distribuídos por Noel e também muito conhecido por fazer pegadinhas com o bom velhinho,
+aprontou mais uma neste ano. 
+
+Como sempre faz todos os anos, Bushy separou os presentes para cada criança colocando um bilhete com o nome dela. O problema que ele não se limitou a simplesmente colocar o nome correto 
+da criança no presente: ele zoou :) cada um dos nomes misturando as letras segundo uma sequência: duas letras do nome, seguidas por duas letras do sobrenome, seguidas por duas letras do
+nome e por duas letras do sobrenome e assim por diante.
+
+Bem, como Noel está bem cansado e sem tempo para brincadeiras, pediu a você que é expert em programação para fazer um programa que converta o nome misturado por Evergreen no nome correto 
+de cada criança.
+
+Apenas um fato curioso: a primeira linha do nome misturado sempre terá um número par de caracteres e a segunda linha, sempre terá o mesmo número de caracteres da primeira linha ou um 
+caractere a menos do que a primeira linha.
+
+Entrada
+A entrada contém um inteiro N (N < 2000) que indica a quantidade de casos de teste. Cada caso de teste é composto por duas linhas, com no máximo 100 caracteres cada. Estas duas linhas contém o nome que foi misturado por Evergreen Bushy, que é composto basicamente por letras maiúsculas, minúsculas e espaços em branco.
+
+Saída
+Com base nas duas linhas de entrada, você deve imprimir o nome correto da criança, seguindo a regra para decifrá-lo conforme descrição acima.
+
+Exemplo de Entrada
+
+3
+Peo lart
+drMazaes
+RortRaul
+bea nta
+JumaTenh
+cir lio
+
+Exemplo de saída
+
+Pedro Malazartes
+Roberta Rantula
+Jucimar Telinho
+
+
+#include <iostream>
+#include <string.h>
+#include <unistd.h>
+using namespace std;
+    
+//Declaração das variáveis
+string sLinha1, sLinha2;
+string sNome = "";
+
+int iCont = 0;
+int iNum = 0;
+
+int main(){
+
+    system("clear");//limpa a template
+    
+    cout << "\n\nInforme o Número de Testes = ";
+    cin >> iNum;
+    cin.ignore();
+ 
+    while(iNum > iCont){//a intrução true propicia um loop eterno
+        iCont++;
+        sNome = "";
+        
+        cout << "\n\nInforme a primeira linha\n", 
+        getline(cin, sLinha1); 
+                     
+        cout << "\nInforme a segunda linha\n",
+        getline(cin, sLinha2);
+
+        //laço para varrer todo conteúdo das linhas informadas
+        for (int i = 0; i < sLinha1.size(); i+=2){
+            sNome += sLinha1.substr(i, 2);
+            sNome += sLinha2.substr(i, 2);
+//            for (int j = i; j < sLinha1.size(); j+=2){
+//                sNome += sLinha2.substr(j, 2);
+//                break;
+//            }
+        }
+        
+        cout << "\nsNome = " << sNome; 
+    }
+    return 0;//Fim da aplicação tchau tchau
+}
+
