@@ -1,0 +1,141 @@
+Um grupo de bactérias apresenta um comportamento muito peculiar: cada uma se identifica como um de dois tipos, e grupos do mesmo tipo, a cada segundo, se juntam e se transformam em um 
+padrão de duas bactérias, e este padrão é determinado somente pelo tipo e número das bactérias no grupo. Portanto, bactérias de um tipo sozinhas se dividem em duas, grupos de duas 
+bactérias do mesmo tipo continuam como um grupo de duas bactérias, mas eventualmente mudam de tipo, e grupos de mais bactérias se juntam para formarem somente duas.
+
+Por exemplo, suponha que a linha esteja AABAAABABB. Nela, temos 6 grupos: AA, B, AAA, B, A, e BB. Portanto, após 1 segundo, elas se tornarão uma linha de 12 bactérias, pois cada grupo se
+transformará em 2. Note que temos dois grupos iguais, os dois primeiros do tipo B, e portanto eles se transformarão no mesmo padrão. Digamos que um grupo A se transforme em BB, B em BA, 
+AA em AA, BB em AB, e AAA em AB. Então, após um segundo, a linha que estamos considerando terá se transformado em AABAABBABBAB. As regras que as bactérias seguem nunca mudam, então após
+mais um segundo a linha fica como AABAAAABBBABBBBA.
+
+Um cientista conseguiu isolar uma única bactéria do tipo A, mas como o grupo em que ela se torna vai mudando tão rapidamente, ele não consegue mais obter observações relevantes sobre o
+grupo. Você pode ajudá-lo?
+
+Entrada
+Na primeira linha contém N (1 <= N <= 20), o número de segundos desde que a bactéria A foi isolada, e M (1 <= M <= 200), o número de regras que as bactérias seguem. Para cada uma das M
+linhas seguintes, vem um regra, composta de duas strings separadas por um espaço: a primeira é composta de várias letras iguais, A ou B, e a segunda é AA, AB, BA, ou BB. Assim, uma regra
+que diz que grupos de 3 bactérias do tipo A se transformam em BA é representada como: AAA BA.
+
+É garantido que as regras em um caso de teste são suficientes para determinar o comportamento das bactérias até o instante N.
+
+Saída
+Dois números, separados por espaço, representando respectivamente o número de bactérias do tipo A e do tipo B após N segundos de iterações.
+
+Exemplo de Entrada
+
+20 2
+A AA
+AA AA
+Exemplo de Saída
+
+2 0
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string.h>
+#include <cstring>
+#include <unistd.h>
+using namespace std;
+    
+//Declaração das variáveis
+string sLinha;
+
+int iCont   = 0;
+int iNum    = 0;
+int iRegra  = 0;
+int iLinha;
+int iContA  = 0;
+int iContB  = 0;
+
+//Definição das Regras
+string sRegraA   = "BB";
+string sRegraAA  = "AA";
+string sRegraAAA = "AB";
+string sRegraB   = "BA";
+string sRegraBB  = "AB";
+
+//Função para converter caracter minúsculo em maíusculo de uma string
+void ConverteString(string &pLinha){//recebe o endereço de memória da variável
+  
+  for (int i = 0; i < pLinha.length(); i++) {
+      int iCaracter = pLinha[i];//pega cada posição da variável em código ASC
+      
+      //verifica na tabela ASCII se é maíusculo ou minúsculo
+      if (islower(iCaracter)){pLinha[i] = toupper(iCaracter);}
+   }
+
+}
+
+//Função para converter a regra
+void ConverteRegra(string pRegra){
+
+  if (pRegra == "A"){
+     iContA++;
+      
+  }else if (pRegra == "AA"){ 
+     iContA++;
+
+  }else if (pRegra == "AAA"){
+     iContA++;
+
+  }else if (pRegra == "BA"){
+      iContB++;
+
+  }else if (pRegra == "AB"){
+      iContB++;
+      
+  }
+  
+}
+
+int main(){
+
+    system("clear");//limpa a template
+    
+    cout << "\n\nInforme o Número de Segundos desde que a bactéria A foi isolada = ";
+    cin >> iNum;
+    cin.ignore();//limpa o buffer do teclado \n ou \t
+     
+    cout << "\nInforme o Número de Regras = ";
+    cin >> iRegra;
+    cin.ignore();//limpa o buffer do teclado \n ou \t
+
+    string sRegra = "";
+    
+    while(iRegra > iCont){
+        iCont++;
+
+        cout << "\n\nInforme a Regra = ", 
+        getline(cin, sLinha); 
+
+        ConverteString(sLinha);//converte para maíusculo
+
+        sRegra = sLinha.substr(0, 1);
+
+        //vou procurar pelos grupos
+        for (int i = 1; i < sLinha.length(); i++){
+                            
+            if (sLinha.substr(i, 1) != sRegra.substr(0, 1)){
+               ConverteRegra(sRegra);
+               sRegra = sLinha.substr(i, 1);
+
+            }else if (sLinha.substr(i, 1) != ""){
+               sRegra += sLinha.substr(i, 1);
+            }
+        }
+        
+    }
+        
+    cout << "\nA quantidade de Regras encontradas = ";
+    
+    cout << iContA << " " << iContB;
+    
+    return 0;//Fim da aplicação tchau tchau
+}
+
+
